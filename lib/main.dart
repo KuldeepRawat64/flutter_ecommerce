@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/constants/global_variables.dart';
 import 'package:flutter_ecommerce_app/features/auth/screens/auth_screen.dart';
+import 'package:flutter_ecommerce_app/providers/user.provider.dart';
 import 'package:flutter_ecommerce_app/router.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (context) => UserProvider()),
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/common/widgets/custom_button.dart';
 import 'package:flutter_ecommerce_app/common/widgets/custom_textfield.dart';
 import 'package:flutter_ecommerce_app/constants/global_variables.dart';
+import 'package:flutter_ecommerce_app/features/auth/services/auth_service.dart';
 
 enum Auth { signin, signup }
 
@@ -17,6 +18,7 @@ class _AuthScreenState extends State<AuthScreen> {
   Auth _auth = Auth.signup;
   final _signUpFormKey = GlobalKey<FormState>();
   final _signInFormKey = GlobalKey<FormState>();
+  final AuthService authService = AuthService();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
@@ -27,6 +29,23 @@ class _AuthScreenState extends State<AuthScreen> {
     _emailController.dispose();
     _passwordController.dispose();
     _nameController.dispose();
+  }
+
+  void signUpUser() {
+    authService.signUpUser(
+      context: context,
+      name: _nameController.text.trim(),
+      email: _emailController.text.trim(),
+      password: _passwordController.text,
+    );
+  }
+
+  void signInUser() {
+    authService.signInUser(
+      context: context,
+      email: _emailController.text.trim(),
+      password: _passwordController.text,
+    );
   }
 
   @override
@@ -89,7 +108,13 @@ class _AuthScreenState extends State<AuthScreen> {
                       const SizedBox(
                         height: 8.0,
                       ),
-                      CustomButton(text: 'Sign Up', onPressed: () {})
+                      CustomButton(
+                          text: 'Sign Up',
+                          onPressed: () {
+                            if (_signUpFormKey.currentState!.validate()) {
+                              signUpUser();
+                            }
+                          })
                     ],
                   ),
                 ),
@@ -133,7 +158,13 @@ class _AuthScreenState extends State<AuthScreen> {
                       const SizedBox(
                         height: 8.0,
                       ),
-                      CustomButton(text: 'Log In', onPressed: () {})
+                      CustomButton(
+                          text: 'Log In',
+                          onPressed: () {
+                            if (_signInFormKey.currentState!.validate()) {
+                              signInUser();
+                            }
+                          })
                     ],
                   ),
                 ),

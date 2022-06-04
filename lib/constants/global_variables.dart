@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 String uri = 'http://192.168.29.57:3000';
-const String authToken = 'x-auth-token';
 
 class GlobalVariables {
   // COLORS

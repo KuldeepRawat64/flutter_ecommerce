@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/constants/global_variables.dart';
-import 'package:flutter_ecommerce_app/features/auth/screens/auth_screen.dart';
-import 'package:flutter_ecommerce_app/features/auth/services/auth_service.dart';
-import 'package:flutter_ecommerce_app/features/home/screens/home_screen.dart';
 import 'package:flutter_ecommerce_app/features/loader/screens/loader_screen.dart';
 import 'package:flutter_ecommerce_app/providers/user.provider.dart';
 import 'package:flutter_ecommerce_app/router.dart';
@@ -20,6 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         onGenerateRoute: ((settings) => generateRoute(settings)),
         theme: ThemeData(
             colorScheme: const ColorScheme.light(

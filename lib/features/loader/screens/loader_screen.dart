@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce_app/common/widgets/bottom_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../../../providers/user.provider.dart';
@@ -25,7 +26,7 @@ class _LoaderScreenState extends State<LoaderScreen> {
   @override
   Widget build(BuildContext context) {
     return Provider.of<UserProvider>(context).user.token.isNotEmpty
-        ? const HomeScreen()
+        ? const BottomBar()
         : const AuthScreen();
   }
 }

@@ -2,9 +2,11 @@
 const express = require('express')
 const mongoose = require('mongoose')
 
+
 // imports from files
 const authRouter = require('./routes/auth')
 const adminRouter = require('./routes/admin')
+const uri = require('./uri')
 
 // init
 const PORT = 3000

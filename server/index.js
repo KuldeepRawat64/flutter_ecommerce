@@ -4,15 +4,17 @@ const mongoose = require('mongoose')
 
 // imports from files
 const authRouter = require('./routes/auth')
+const adminRouter = require('./routes/admin')
 
 // init
 const PORT = 3000
 const app = express()
-const DB = 'mongodb+srv://kuldeeprwt64:Kuldee456@cluster0.s4ol39h.mongodb.net/?retryWrites=true&w=majority'
+const DB = uri
 
 // middleware
 app.use(express.json())
 app.use(authRouter)
+app.use(adminRouter)
 
 // connections
 mongoose.connect(DB).then(() => console.log('connection successful')).catch((e) => console.log(e))
